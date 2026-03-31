@@ -1,0 +1,1261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="StormRise Media Services — Web Design, Social Media Management & Content Creation for local businesses in southern Minnesota.">
+<title>Services — StormRise Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #1a1228;
+    --surface:  #241a3a;
+    --surface2: #2e2048;
+    --border:   #3a2d55;
+    --border2:  #4a3d6a;
+    --text:     #f0ece8;
+    --muted:    #7a708a;
+    --soft:     #b8aec8;
+    --gold:     #D4A853;
+    --gold-dim: rgba(212,168,83,0.08);
+    --gold-mid: rgba(212,168,83,0.16);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Storm texture removed */
+
+  
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── Nav ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(36,26,58,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(58,45,85,0.5);
+    transition: padding 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+
+  .nav-logo span { color: var(--gold); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--soft);
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+
+  .nav-cta {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 10px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--gold); color: var(--bg) !important; text-decoration: none; }
+
+  .nav-toggle {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    background: none;
+    border: none;
+    outline: none;
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 101;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--soft);
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  .nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* ── Page Hero ── */
+  .page-hero {
+    padding: 160px 60px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .page-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.08;
+    color: var(--text);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.4s;
+  }
+
+  .page-title em { font-style: italic; color: var(--gold); }
+
+  .page-intro {
+    font-size: 18px;
+    color: var(--soft);
+    max-width: 580px;
+    line-height: 1.75;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.6s;
+  }
+
+  /* ── Section base ── */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .section-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3.5vw, 44px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  .section-sub {
+    font-size: 15px;
+    color: var(--soft);
+    max-width: 520px;
+    line-height: 1.75;
+    margin-bottom: 52px;
+  }
+
+  /* ── Core service cards ── */
+  .service-block {
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+
+  .service-header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 36px 40px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .service-header:hover { background: var(--surface2); }
+
+  .service-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-style: italic;
+    color: var(--border2);
+    line-height: 1;
+    width: 56px;
+  }
+
+  .service-header-text h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .service-header-text p {
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .service-price-tag {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .price-from {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--gold);
+  }
+
+  .price-unit {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .service-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .service-col {
+    padding: 32px 40px;
+    border-right: 1px solid var(--border);
+  }
+
+  .service-col:last-child { border-right: none; }
+
+  .service-col-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .service-col-sub {
+    font-size: 12px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 18px;
+    line-height: 1.5;
+  }
+
+  .includes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+
+  .includes-list li {
+    font-size: 13.5px;
+    color: var(--soft);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .includes-list li::before {
+    content: '·';
+    position: absolute;
+    left: 3px;
+    color: var(--gold);
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .includes-list li em {
+    color: var(--gold);
+    font-style: italic;
+    font-size: 12px;
+  }
+
+  /* Social tiers */
+  .social-tiers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-top: 1px solid var(--border);
+  }
+
+  .social-tier {
+    background: var(--bg);
+    padding: 24px 24px;
+    transition: background 0.2s;
+  }
+
+  .social-tier:hover { background: var(--surface); }
+
+  .tier-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .tier-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .tier-price span {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .tier-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .tier-features li {
+    font-size: 12.5px;
+    color: var(--soft);
+    padding-left: 12px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .tier-features li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border2);
+    font-size: 11px;
+  }
+
+  /* ── Fast Start ── */
+  .fast-start {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px;
+  }
+
+  .fast-start-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .fast-start h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .fast-start p {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .fast-start-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    list-style: none;
+  }
+
+  .fast-start-features li {
+    font-size: 13px;
+    color: var(--soft);
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .fast-start-features li::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: var(--gold);
+    font-size: 16px;
+    line-height: 1.1;
+  }
+
+  .fast-start-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .fast-start-price .label {
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .fast-start-price .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .fast-start-price .note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  /* ── Bundles ── */
+  .bundles-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .bundles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .bundle-card {
+    background: var(--bg);
+    padding: 36px 24px;
+    transition: background 0.2s;
+  }
+
+  .bundle-card:hover { background: var(--surface); }
+  .bundle-card.featured { background: var(--gold-dim); }
+  .bundle-card.featured:hover { background: var(--gold-mid); }
+
+  .bundle-badge {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+    display: inline-block;
+    padding: 3px 10px;
+    margin-bottom: 16px;
+  }
+
+  .bundle-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .bundle-outcome {
+    font-size: 12px;
+    color: var(--gold);
+    font-style: italic;
+    margin-bottom: 6px;
+  }
+
+  .bundle-ideal {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .bundle-pricing {
+    padding: 16px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+
+  .bundle-pricing-row {
+    margin-bottom: 10px;
+  }
+
+  .bundle-pricing-row:last-child { margin-bottom: 0; }
+
+  .bundle-pricing-label {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .bundle-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .bundle-price span {
+    font-family: 'Jost', sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    font-weight: 300;
+  }
+
+  .bundle-note {
+    font-size: 10px;
+    color: var(--muted);
+    font-style: italic;
+    margin-top: 3px;
+  }
+
+  .bundle-gold-note {
+    font-size: 10px;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .bundle-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .bundle-features li {
+    font-size: 12.5px;
+    color: var(--soft);
+    padding-left: 14px;
+    position: relative;
+    line-height: 1.4;
+  }
+
+  .bundle-features li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--border2);
+    font-size: 11px;
+  }
+
+  /* ── Add-ons ── */
+  .addons-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 80px 60px;
+  }
+
+  .addons-inner { max-width: 1100px; margin: 0 auto; }
+
+  .addons-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .addon-card {
+    border: 1px solid var(--border);
+    padding: 24px 22px;
+    background: var(--bg);
+    transition: border-color 0.2s;
+  }
+
+  .addon-card:hover { border-color: var(--gold); }
+
+  .addon-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .addon-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .addon-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold);
+  }
+
+  /* ── Process ── */
+  .process-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 80px 60px;
+  }
+
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .process-step {
+    background: var(--bg);
+    padding: 36px 24px;
+    transition: background 0.2s;
+  }
+
+  .process-step:hover { background: var(--surface); }
+
+  .process-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-style: italic;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 14px;
+  }
+
+  .process-title {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .process-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .process-time {
+    font-size: 11px;
+    color: var(--gold);
+    font-style: italic;
+    margin-top: 8px;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 80px 60px;
+    text-align: center;
+  }
+
+  .cta-inner { max-width: 680px; margin: 0 auto; }
+
+  .btn-primary {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    background: var(--gold);
+    color: #1A1A2E;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-block;
+    margin-top: 32px;
+  }
+
+  .btn-primary:hover { background: #c49a45; transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: 'Jost', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 16px 40px;
+    border: 1px solid var(--border2);
+    color: #4A3D6A;
+    transition: all 0.2s;
+    display: inline-block;
+    margin-top: 32px;
+    margin-left: 16px;
+  }
+
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* ── Footer ── */
+  footer {
+    padding: 48px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text); }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+
+  .footer-links a {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      pointer-events: all;
+      display: flex; flex-direction: column;
+      position: fixed; inset: 0;
+      background: var(--bg);
+      justify-content: center; align-items: center;
+      gap: 32px; z-index: 99;
+    }
+    .nav-links.open a { font-size: 16px; }
+    .nav-toggle {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    background: none;
+    border: none;
+    outline: none; display: flex; }
+    .page-hero, .section, .bundles-section, .process-section { padding: 100px 24px 60px; }
+    .fast-start { padding: 48px 24px; }
+    .fast-start-inner { grid-template-columns: 1fr; gap: 32px; }
+    .fast-start-price { text-align: left; }
+    .addons-section { padding: 60px 24px; }
+    .cta-section { padding: 60px 24px; }
+    footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+    .service-body { grid-template-columns: 1fr; }
+    .service-col { border-right: none; border-bottom: 1px solid var(--border); }
+    .service-col:last-child { border-bottom: none; }
+    .social-tiers { grid-template-columns: 1fr; }
+    .bundles-grid { grid-template-columns: 1fr; }
+    .addons-grid { grid-template-columns: 1fr 1fr; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .fast-start-features { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .service-header { grid-template-columns: auto 1fr; }
+    .service-price-tag { display: none; }
+    .addons-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+    .btn-ghost { margin-left: 0; margin-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Storm<span>Rise</span> Media</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Hero -->
+<div class="page-hero">
+  <p class="page-eyebrow">What I Offer</p>
+  <h1 class="page-title">Three services.<br><em>Everything</em> you need.</h1>
+  <p class="page-intro">Web design, social media management, and content creation — all under one roof. One creative partner who handles it all so you can focus on running your business.</p>
+</div>
+
+<!-- Core Services -->
+<div class="section" style="padding-top:0;">
+
+  <!-- 01 Web Design -->
+  <div class="service-block" id="web">
+    <div class="service-header">
+      <div class="service-num">01</div>
+      <div class="service-header-text">
+        <h2>Web Design</h2>
+        <p>Clean, professional websites built on Wix or WordPress — mobile ready, fast, and optimized.</p>
+      </div>
+      <div class="service-price-tag">
+        <span class="price-from">From</span>
+        <div class="price-amount">$500</div>
+      </div>
+    </div>
+    <div class="service-body">
+      <div class="service-col">
+        <div class="service-col-label">Wix · From $750</div>
+        <div class="service-col-sub">Best for restaurants, salons, retail & service businesses wanting a simple, low-maintenance site.</div>
+        <ul class="includes-list">
+          <li>Up to 5 pages, mobile responsive</li>
+          <li>Contact form, map & business hours</li>
+          <li>Image optimization — photos compressed for fast loading</li>
+          <li>Photo & video embed setup</li>
+          <li>Basic SEO setup — helps Google find your site</li>
+          <li>Drag & drop editor — easy for you to update yourself</li>
+          <li>Hosting & SSL included in your Wix plan (~$17–36/mo)</li>
+          <li>✓ Your domain & content are always yours</li>
+          <li>2 rounds of revisions</li>
+          <li><em>⏱ Typical timeline: 1–2 weeks</em></li>
+        </ul>
+      </div>
+      <div class="service-col">
+        <div class="service-col-label">WordPress · From $1,200</div>
+        <div class="service-col-sub">Best for businesses with blogs, growth plans, or those wanting maximum SEO performance.</div>
+        <ul class="includes-list">
+          <li>Up to 8 pages, mobile responsive</li>
+          <li>Contact form, map & business hours</li>
+          <li>Blog setup — post updates, news & articles easily</li>
+          <li>Image optimization — photos compressed for fast loading</li>
+          <li>Photo & video embed setup</li>
+          <li>Full SEO optimization with Yoast — industry-leading search tool</li>
+          <li>Plugin setup & training — tools that add features to your site</li>
+          <li>Requires hosting ($5–15/mo, billed directly to you)</li>
+          <li>✓ Your domain & content are always yours</li>
+          <li>2 rounds of revisions</li>
+          <li><em>⏱ Typical timeline: 2–3 weeks</em></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 Social Media Management -->
+  <div class="service-block" id="social">
+    <div class="service-header">
+      <div class="service-num">02</div>
+      <div class="service-header-text">
+        <h2>Social Media Management</h2>
+        <p>Consistent, professional posting — handled for you every month.</p>
+      </div>
+      <div class="service-price-tag">
+        <span class="price-from">From</span>
+        <div class="price-amount">$350<span class="price-unit">/mo</span></div>
+      </div>
+    </div>
+    <div class="social-tiers">
+      <div class="social-tier">
+        <div class="tier-label">Basic</div>
+        <div class="tier-price">$350<span>/mo</span></div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:12px;">Just getting started on social media.</div>
+        <ul class="tier-features">
+          <li>3 posts per week</li>
+          <li>1 platform of your choice</li>
+          <li>Facebook, Instagram, X/Twitter, TikTok, etc.</li>
+          <li>Social media content & captions</li>
+          <li>Branded graphics every post</li>
+          <li>Comment & message monitoring</li>
+          <li>Monthly performance summary</li>
+        </ul>
+      </div>
+      <div class="social-tier" style="background:var(--surface);">
+        <div class="tier-label">Standard — Most Popular</div>
+        <div class="tier-price">$700<span>/mo</span></div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:12px;">Ready to grow across multiple platforms.</div>
+        <ul class="tier-features">
+          <li>5 posts per week</li>
+          <li>2 platforms of your choice</li>
+          <li>Facebook, Instagram, X/Twitter, TikTok, etc.</li>
+          <li>Social media content & captions</li>
+          <li>Branded graphics every post</li>
+          <li>Stories & reels included</li>
+          <li>Comment & message monitoring</li>
+          <li>Monthly performance report</li>
+        </ul>
+      </div>
+      <div class="social-tier">
+        <div class="tier-label">Full Service</div>
+        <div class="tier-price">$1,200<span>/mo</span></div>
+        <div style="font-size:11px;color:var(--muted);font-style:italic;margin-bottom:12px;">Entire social presence fully managed.</div>
+        <ul class="tier-features">
+          <li>Daily posts</li>
+          <li>3+ platforms of your choice</li>
+          <li>Facebook, Instagram, X/Twitter, TikTok, etc.</li>
+          <li>Social media content & captions</li>
+          <li>Custom graphics & video content</li>
+          <li>Active comment & DM monitoring</li>
+          <li>Engagement & community building</li>
+          <li>Monthly strategy & performance report</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 Content Creation -->
+  <div class="service-block" id="content">
+    <div class="service-header">
+      <div class="service-num">03</div>
+      <div class="service-header-text">
+        <h2>Content Creation</h2>
+        <p>Words, graphics, and video that represent your brand — created from scratch.</p>
+      </div>
+      <div class="service-price-tag">
+        <span class="price-from">From</span>
+        <div class="price-amount">$75<span class="price-unit">/page or hr</span></div>
+      </div>
+    </div>
+    <div class="service-body">
+      <div class="service-col">
+        <div class="service-col-label">Written Content</div>
+        <div class="service-col-sub">Put your story, services & value into words.</div>
+        <ul class="includes-list">
+          <li>Website page copywriting — $100/page</li>
+          <li>Blog posts Blog posts & articles — $75/post articles — $100/post</li>
+          <li>Business bios & about pages</li>
+          <li>Social media content & captions — <em>included with social media management</em></li>
+          <li>Brand voice development</li>
+        </ul>
+      </div>
+      <div class="service-col">
+        <div class="service-col-label">Visual Content</div>
+        <div class="service-col-sub">Eye-catching graphics, polished photos & professional video.</div>
+        <ul class="includes-list">
+          <li>Photo editing — $50 per image</li>
+          <li>Video editing Video editing & YouTube/Vimeo setup — $75/hr reels — $150 per video</li>
+          <li>Social media graphics — $150/set of 5</li>
+          <li>Brand Starter Kit — $250</li>
+          <li>Logo, colors, fonts & 5 social templates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Fast Start -->
+<div class="fast-start">
+  <div class="fast-start-inner">
+    <div>
+      <p class="section-eyebrow">Just Getting Started?</p>
+      <h3>Fast Start Package</h3>
+      <p>Perfect for businesses that want to test the waters before committing to a full package. Get a clean, professional one-page website delivered in under a week — no monthly fee required.</p>
+      <ul class="fast-start-features">
+        <li>1-page Wix website — clean & professional</li>
+        <li>Your business info, hours & contact form</li>
+        <li>Mobile responsive & optimized</li>
+        <li>Basic SEO setup so Google can find you</li>
+        <li>Image optimization included</li>
+        <li>Delivered in under 1 week</li>
+        <li>1 round of revisions</li>
+        <li>Easy to expand later as you grow</li>
+      </ul>
+    </div>
+    <div class="fast-start-price">
+      <div class="label">One-Time</div>
+      <div class="amount">$299</div>
+      <div class="note">No monthly fee required</div>
+    </div>
+  </div>
+</div>
+
+<!-- Bundled Packages -->
+<div class="bundles-section">
+  <p class="section-eyebrow">Bundled Packages — All 3 Services</p>
+  <h2 class="section-title">More together.<br><em>Save more too.</em></h2>
+  <p class="section-sub">Bundle all three services and get copywriting, graphics, and content included in your website build — saving you hundreds upfront.</p>
+
+  <div class="bundles-grid">
+
+    <div class="bundle-card">
+      <div class="bundle-name">Starter Bundle</div>
+      <div class="bundle-outcome">Get online fast</div>
+      <div class="bundle-ideal">Ideal for: New businesses ready to establish an online presence</div>
+      <div class="bundle-pricing">
+        <div class="bundle-pricing-row">
+          <div class="bundle-pricing-label">Website Build</div>
+          <div class="bundle-price">$750 <span>one-time</span></div>
+          <div class="bundle-note">Copywriting included — save $200</div>
+          <div class="bundle-gold-note">⏱ Typical delivery: 1–2 weeks</div>
+        </div>
+        <div class="bundle-pricing-row">
+          <div class="bundle-pricing-label">Ongoing Marketing</div>
+          <div class="bundle-price">$350 <span>/ mo</span></div>
+          <div class="bundle-note">Monthly subscription optional — no long-term contract</div>
+          <div class="bundle-gold-note">✓ Your domain & content are always yours</div>
+        </div>
+      </div>
+      <ul class="bundle-features">
+        <li>3-page Wix website, mobile responsive</li>
+        <li>Image optimization & contact form</li>
+        <li>Copywriting — 3 pages included</li>
+        <li>3 posts/week on 1 platform of your choice</li>
+        <li>Social media content & captions</li>
+        <li>Branded graphics every post</li>
+        <li>Comment & message monitoring</li>
+        <li>1 revision round</li>
+      </ul>
+    </div>
+
+    <div class="bundle-card featured">
+      <div class="bundle-badge">Most Popular</div>
+      <div class="bundle-name">Business Bundle</div>
+      <div class="bundle-outcome">Start generating leads</div>
+      <div class="bundle-ideal">Ideal for: Growing businesses ready to attract and convert customers online</div>
+      <div class="bundle-pricing">
+        <div class="bundle-pricing-row">
+          <div class="bundle-pricing-label">Website Build</div>
+          <div class="bundle-price">$1,200 <span>one-time</span></div>
+          <div class="bundle-note">Copywriting + graphics included — save $350</div>
+          <div class="bundle-gold-note">⏱ Typical delivery: 2–3 weeks</div>
+        </div>
+        <div class="bundle-pricing-row">
+          <div class="bundle-pricing-label">Ongoing Marketing</div>
+          <div class="bundle-price">$700 <span>/ mo</span></div>
+          <div class="bundle-note">Monthly subscription optional — no long-term contract</div>
+          <div class="bundle-gold-note">✓ Your domain & content are always yours</div>
+        </div>
+      </div>
+      <ul class="bundle-features">
+        <li>5-page WordPress site, mobile responsive</li>
+        <li>Image optimization & full SEO setup</li>
+        <li>Copywriting — 5 pages included</li>
+        <li>5 posts/week on 2 platforms of your choice</li>
+        <li>Social media content & captions</li>
+        <li>Stories & reels included</li>
+        <li>5 social media graphics</li>
+        <li>Monthly performance report</li>
+        <li>2 revision rounds</li>
+      </ul>
+    </div>
+
+    <div class="bundle-card">
+      <div class="bundle-name">Growth Bundle</div>
+      <div class="bundle-outcome">Scale traffic & conversions</div>
+      <div class="bundle-ideal">Ideal for: Established businesses ready for a full-scale digital presence</div>
+      <div class="bundle-pricing">
+        <div class="bundle-pricing-row">
+          <div class="bundle-pricing-label">Website Build</div>
+          <div class="bundle-price">$1,500 <span>one-time</span></div>
+          <div class="bundle-note">Full copywriting, graphics & brand kit — save $500+</div>
+          <div class="bundle-gold-note">⏱ Typical delivery: 3–4 weeks</div>
+        </div>
+        <div class="bundle-pricing-row">
+          <div class="bundle-pricing-label">Ongoing Marketing</div>
+          <div class="bundle-price">$1,200 <span>/ mo</span></div>
+          <div class="bundle-note">Monthly subscription optional — no long-term contract</div>
+          <div class="bundle-gold-note">✓ Your domain & content are always yours</div>
+        </div>
+      </div>
+      <ul class="bundle-features">
+        <li>8+ page WordPress site, mobile responsive</li>
+        <li>Full SEO optimization & blog setup</li>
+        <li>Full copywriting included</li>
+        <li>Daily posts on 3+ platforms of your choice</li>
+        <li>Social media content & captions</li>
+        <li>Custom graphics & video content</li>
+        <li>Photo & video editing</li>
+        <li>10 social graphics + brand starter kit</li>
+        <li>Monthly strategy & performance report</li>
+        <li>Priority support & 2 revision rounds</li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<!-- Add-Ons -->
+<div class="addons-section">
+  <div class="addons-inner">
+    <p class="section-eyebrow">Add-On Services</p>
+    <h2 class="section-title">More ways I can <em>help.</em></h2>
+    <p class="section-sub" style="margin-bottom:40px;">Available as standalone services or added to any package.</p>
+    <div class="addons-grid">
+      <div class="addon-card">
+        <div class="addon-title">SEO Optimization</div>
+        <div class="addon-desc">Keyword research, on-page SEO, local search optimization & audit report</div>
+        <div class="addon-price">$250</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Google Business Profile</div>
+        <div class="addon-desc">Setup, optimization & local listing so customers can find you on Google Maps</div>
+        <div class="addon-price">$150</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Email Marketing</div>
+        <div class="addon-desc">Platform setup, branded template, monthly newsletter writing & sending</div>
+        <div class="addon-price">$250<span style="font-family:'Jost',sans-serif;font-size:12px;color:var(--muted);font-weight:300;"> / mo</span></div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Paid Ads Management</div>
+        <div class="addon-desc">Google & Facebook campaign setup, targeting, optimization & monthly report</div>
+        <div class="addon-price">$500<span style="font-family:'Jost',sans-serif;font-size:12px;color:var(--muted);font-weight:300;"> / mo + ad spend</span></div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Marketing Strategy</div>
+        <div class="addon-desc">Customer persona, SWOT, value proposition, KPIs & written strategy document</div>
+        <div class="addon-price">$500</div>
+      </div>
+      <div class="addon-card">
+        <div class="addon-title">Rush Delivery</div>
+        <div class="addon-desc">Turnaround under 48 hours — applied per project</div>
+        <div class="addon-price">+25%</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Process -->
+<div class="process-section">
+  <p class="section-eyebrow">How It Works</p>
+  <h2 class="section-title">Simple. <em>Transparent.</em> No surprises.</h2>
+  <p class="section-sub">Here's what working together looks like from first conversation to launch.</p>
+  <div class="process-grid">
+    <div class="process-step">
+      <div class="process-num">1</div>
+      <div class="process-title">We Talk</div>
+      <p class="process-desc">Free consultation to understand your business, goals, and what you need.</p>
+      <div class="process-time">Day 1</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">2</div>
+      <div class="process-title">I Propose</div>
+      <p class="process-desc">You get a clear scope, timeline, and price — no jargon, no surprises.</p>
+      <div class="process-time">Within 2–3 days</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">3</div>
+      <div class="process-title">We Build</div>
+      <p class="process-desc">I handle all the creative work. You review and give feedback.</p>
+      <div class="process-time">1–3 weeks depending on project</div>
+    </div>
+    <div class="process-step">
+      <div class="process-num">4</div>
+      <div class="process-title">You Launch</div>
+      <p class="process-desc">Your site and content go live. Ongoing monthly support available.</p>
+      <div class="process-time">On your timeline</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <p class="section-eyebrow">Ready to Get Started?</p>
+    <h2 class="section-title">Let's build something <em>great.</em></h2>
+    <p class="section-sub" style="margin: 0 auto;">The first conversation is always free. Reach out and let's talk about your business.</p>
+    <div>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+      <a href="portfolio.html" class="btn-ghost">View My Work</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Storm<span>Rise</span> Media</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 StormRise Media · Wells, MN</p>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById("nav-toggle").classList.toggle("active");
+    document.getElementById('nav-links').classList.toggle('open');
+  }
+
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('nav-toggle').classList.remove('active');
+    });
+  });
+
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('nav');
+    nav.style.padding = window.scrollY > 60 ? '14px 60px' : '20px 60px';
+    
+  });
+</script>
+
+</body>
+</html>
