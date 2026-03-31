@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="About Ginger Murray — StormRise Media. Storm chaser, content creator, and full-service creative studio owner based in Wells, MN.">
+<title>About — StormRise Media</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:       #1a1228;
+    --surface:  #241a3a;
+    --surface2: #2e2048;
+    --border:   #3a2d55;
+    --border2:  #4a3d6a;
+    --text:     #f0ece8;
+    --muted:    #7a708a;
+    --soft:     #b8aec8;
+    --gold:     #D4A853;
+    --gold-dim: rgba(212,168,83,0.08);
+    --gold-mid: rgba(212,168,83,0.16);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Nav */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(36,26,58,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(58,45,85,0.5);
+    transition: padding 0.3s;
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--text); letter-spacing: 0.04em; }
+  .nav-logo span { color: var(--gold); font-style: italic; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft); transition: color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+  .nav-cta { font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; padding: 10px 24px; border: 1px solid var(--gold); color: var(--gold); transition: all 0.2s; }
+  .nav-cta:hover { background: var(--gold); color: var(--bg) !important; }
+  .nav-links a.nav-cta:hover { color: var(--bg) !important; }
+  .nav-toggle {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation; display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; outline: none; z-index: 101; }
+  .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--soft); transition: all 0.3s ease; transform-origin: center; }
+  .nav-toggle.active span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .nav-toggle.active span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Bold Intro */
+  .bold-intro { padding: 160px 60px 80px; background: var(--surface); border-bottom: 1px solid var(--border); }
+  .bold-intro-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr auto; gap: 60px; align-items: center; }
+  .section-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+  .bold-statement { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4.5vw, 64px); font-weight: 400; line-height: 1.1; color: var(--text); }
+  .bold-statement em { color: var(--gold); font-style: italic; }
+  .bold-statement-sub { font-size: 18px; color: var(--soft); margin-top: 24px; max-width: 560px; line-height: 1.7; }
+  .headshot-wrap { width: 260px; height: 260px; border-radius: 50%; border: 3px solid var(--gold); background: var(--surface2); overflow: hidden; flex-shrink: 0; }
+  .headshot-wrap img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Stats Bar */
+  .stats-bar { background: #0d0a14; border-bottom: 1px solid var(--border); }
+  .stats-bar-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; align-items: stretch; }
+  .stat-divider { background: var(--border); }
+  .big-stat { padding: 48px 40px; text-align: center; }
+  .big-stat-num { font-family: 'Playfair Display', serif; font-size: clamp(36px, 5vw, 72px); color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .big-stat-label { font-size: 11px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--soft); margin-bottom: 4px; }
+  .big-stat-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+  /* Engagement Grid */
+  .engagement { border-bottom: 1px solid var(--border); }
+  .engagement-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--border); }
+  .eng-card { background: var(--bg); padding: 36px 28px; transition: background 0.2s; }
+  .eng-card:hover { background: var(--surface2); }
+  .eng-num { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3vw, 44px); color: var(--gold); line-height: 1; margin-bottom: 8px; }
+  .eng-label { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 8px; letter-spacing: 0.05em; }
+  .eng-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+  /* Story */
+  .story { max-width: 1100px; margin: 0 auto; padding: 80px 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .story-left { position: sticky; top: 120px; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 400; color: var(--text); line-height: 1.15; margin-bottom: 16px; }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-sub { font-size: 15px; color: var(--muted); line-height: 1.75; }
+  .story-right { display: flex; flex-direction: column; gap: 40px; }
+  .story-block { position: relative; padding-left: 28px; }
+  .story-block::before { content: ''; position: absolute; left: 0; top: 8px; width: 2px; height: calc(100% - 8px); background: var(--border); }
+  .story-block::after { content: ''; position: absolute; left: -3px; top: 8px; width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+  .story-block h3 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 400; color: var(--text); margin-bottom: 10px; }
+  .story-block p { font-size: 15px; color: var(--soft); line-height: 1.8; }
+  .story-block img { width: 100%; border: 1px solid var(--border); margin-bottom: 16px; display: block; }
+  .pull-quote { background: var(--surface); border-left: 3px solid var(--gold); padding: 24px 28px; }
+  .pull-quote p { font-family: 'Playfair Display', serif; font-size: 18px; font-style: italic; color: var(--text); line-height: 1.6; margin-bottom: 8px; }
+  .pull-quote cite { font-size: 11px; font-style: normal; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+
+  /* Skills */
+  .skills-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 60px; }
+  .skills-inner { max-width: 1100px; margin: 0 auto; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+  .skill-card { border: 1px solid var(--border); padding: 28px 24px; transition: border-color 0.2s, background 0.2s; }
+  .skill-card:hover { border-color: var(--border2); background: var(--surface2); }
+  .skill-card-title { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .skill-card-text { font-size: 13.5px; color: var(--soft); line-height: 1.65; }
+
+  /* Faith */
+  .faith-section { padding: 80px 60px; }
+  .faith-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .faith-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(28px, 3.5vw, 42px); font-weight: 400; color: var(--text); line-height: 1.15; margin-bottom: 20px; }
+  .faith-text h2 em { font-style: italic; color: var(--gold); }
+  .faith-text p { font-size: 15px; color: var(--soft); line-height: 1.8; margin-bottom: 16px; }
+  .faith-verse { border: 1px solid var(--gold); background: var(--gold-dim); padding: 36px; }
+  .faith-verse blockquote { font-family: 'Playfair Display', serif; font-size: 20px; font-style: italic; color: var(--text); line-height: 1.6; margin-bottom: 14px; }
+  .faith-verse cite { font-size: 11px; font-style: normal; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); }
+  .faith-tagline { margin-top: 28px; font-family: 'Playfair Display', serif; font-size: 16px; font-style: italic; color: var(--gold); }
+
+  /* CTA */
+  .cta-section { background: var(--surface); border-top: 1px solid var(--border); padding: 80px 60px; text-align: center; }
+  .cta-inner { max-width: 680px; margin: 0 auto; }
+  .btn-primary { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 16px 40px; background: var(--gold); color: #1a1228; border: none; cursor: pointer; transition: all 0.2s; display: inline-block; margin-top: 32px; }
+  .btn-primary:hover { background: #c49a45; transform: translateY(-1px); }
+  .btn-ghost { font-family: 'Jost', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; padding: 16px 40px; border: 1px solid var(--border2); color: var(--soft); transition: all 0.2s; display: inline-block; margin-top: 32px; margin-left: 16px; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* Footer */
+  footer { padding: 48px 60px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 16px; }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--text); }
+  .footer-logo span { color: var(--gold); font-style: italic; }
+  .footer-links { display: flex; gap: 28px; list-style: none; }
+  .footer-links a { font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 28px; }
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: fixed; inset: 0; background: var(--bg); justify-content: center; align-items: center; gap: 32px; z-index: 150; }
+    .nav-links.open a { font-size: 16px; }
+    .nav-toggle {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation; display: flex; z-index: 200; }
+    .bold-intro { padding: 120px 24px 60px; }
+    .bold-intro-inner { grid-template-columns: 1fr; gap: 40px; }
+    .headshot-wrap { width: 180px; height: 180px; }
+    .stats-bar-inner { grid-template-columns: 1fr; }
+    .stat-divider { display: none; }
+    .big-stat { padding: 32px 24px; border-bottom: 1px solid var(--border); }
+    .engagement-inner { grid-template-columns: 1fr 1fr; }
+    .story { grid-template-columns: 1fr; padding: 60px 24px; gap: 40px; }
+    .story-left { position: static; }
+    .skills-section { padding: 60px 24px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .faith-section { padding: 60px 24px; }
+    .faith-inner { grid-template-columns: 1fr; gap: 40px; }
+    .cta-section { padding: 60px 24px; }
+    footer { padding: 36px 24px; flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 600px) {
+    .engagement-inner { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .btn-ghost { margin-left: 0; margin-top: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Storm<span>Rise</span> Media</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Bold Intro -->
+<div class="bold-intro">
+  <div class="bold-intro-inner">
+    <div>
+      <p class="section-eyebrow">About Ginger Murray</p>
+      <h1 class="bold-statement">You're not just getting a social media manager.<br><em>You're getting an audience.</em></h1>
+      <p class="bold-statement-sub">I'm Ginger Murray — storm chaser, content creator, platform builder, and the person behind StormRise Media. Since 2024 I've helped grow Tornado Tacklers from 40K to over 230,000 followers on Facebook — and I bring that same growth strategy to your business.</p>
+    </div>
+    <div class="headshot-wrap">
+      <img src="headshot.png" alt="Ginger Murray — StormRise Media">
+    </div>
+  </div>
+</div>
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="big-stat">
+      <div class="big-stat-num">183M</div>
+      <div class="big-stat-label">Total Views · 2025</div>
+      <div class="big-stat-desc">Tornado Tacklers content reached 183 million people</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="big-stat">
+      <div class="big-stat-num">10.4M</div>
+      <div class="big-stat-label">Total Engagement · 2025</div>
+      <div class="big-stat-desc">+27% year over year growth in engagement</div>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="big-stat">
+      <div class="big-stat-num">81.9%</div>
+      <div class="big-stat-label">Non-Follower Reach</div>
+      <div class="big-stat-desc">Over 80% of engagement comes from outside existing followers</div>
+    </div>
+  </div>
+</div>
+
+<!-- Engagement Grid -->
+<div class="engagement">
+  <div class="engagement-inner">
+    <div class="eng-card">
+      <div class="eng-num">1.66M</div>
+      <div class="eng-label">Reactions</div>
+      <div class="eng-desc">Likes, loves, and emotional responses — a highly reactive audience that shows up every time.</div>
+    </div>
+    <div class="eng-card">
+      <div class="eng-num">210K</div>
+      <div class="eng-label">Comments</div>
+      <div class="eng-desc">Real conversations on every post. Our audience doesn't just watch — they engage and discuss.</div>
+    </div>
+    <div class="eng-card">
+      <div class="eng-num">296K</div>
+      <div class="eng-label">Shares</div>
+      <div class="eng-desc">Nearly 300K shares means our content travels far beyond the existing follower base.</div>
+    </div>
+    <div class="eng-card">
+      <div class="eng-num">20–40K</div>
+      <div class="eng-label">Live Viewers Per Chase</div>
+      <div class="eng-desc">Tens of thousands tune in live during every storm chase broadcast.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Story -->
+<div class="story">
+  <div class="story-left">
+    <p class="section-eyebrow">My Story</p>
+    <h2 class="section-title">Where the storm<br>meets <em>purpose.</em></h2>
+    <p class="section-sub">Every business has a story. Mine starts in the middle of a storm — and that's exactly where I found my calling.</p>
+  </div>
+  <div class="story-right">
+
+    <div class="story-block">
+      <h3>The storm that started it all</h3>
+      <p>I started chasing storms in 2022 — not just as a hobby, but as a way to feel close to my brother after he passed. Storm chasing was something we shared, and getting out under those skies was how I found my way through grief. In those storms, I found something unexpected: purpose. I've witnessed over 15 tornadoes, and every single one has reminded me that there's something much bigger than me at work.</p>
+    </div>
+
+    <div class="pull-quote">
+      <p>"I rose out of the storm — and found exactly what I was called to do."</p>
+      <cite>— Ginger Murray, StormRise Media</cite>
+    </div>
+
+    <div class="pull-quote" style="margin-top:16px;">
+      <p>"Then the Lord spoke to Job out of the storm."</p>
+      <cite>— Job 38:1</cite>
+    </div>
+
+    <div class="story-block">
+      <h3>Tornado Tacklers & 300K followers</h3>
+      <p>As Media & Operations Director of Tornado Tacklers, I manage content and operations for a storm chasing organization with over 300,000 followers — 230,000+ followers on Facebook alone. I storm chase and livestream to inform the public and help save lives — getting eyes on the storm in real time so communities can take cover before it's too late. From hosting live storm-chasing broadcasts with radar overlays and real-time commentary to designing state-specific severe weather graphics that boosted warning click-through rates by 15% — everything I do in the field and everything I create is built to inform, engage, and save lives.</p>
+    </div>
+
+    <div class="story-block">
+      <h3>Featured on NewsNation — June 21, 2025</h3>
+      <img src="newsnation.jpg" alt="Ginger Murray featured on NewsNation — June 21, 2025">
+      <p>On June 20, 2025, I documented multiple tornadoes across North Dakota — from Spiritwood during the day to Fort Ransom after dark. That outbreak included an EF5 tornado, the first in 13 years — a historic and humbling moment to witness firsthand. The next morning, June 21, 2025, I was featured on NewsNation to discuss the historic outbreak.</p>
+    </div>
+
+    <div class="story-block">
+      <h3>Where technology met the chase</h3>
+      <p>Along the way I discovered something unexpected — building the technology behind the content was just as thrilling as the chase itself. I built a custom weather alert system using NWS API data, developed live streaming infrastructure with custom OBS overlays, and dove into AI-powered tools — all self-taught by doing, using AI as a collaborator to turn ideas into working code. That curiosity led to Storm Current, a social platform for storm chasers and weather enthusiasts, currently in development.</p>
+    </div>
+
+    <div class="story-block">
+      <h3>StormRise Media — built for your business</h3>
+      <p>I'm based in Wells, MN and serve businesses across southern Minnesota. Everything I've learned chasing storms, building audiences, producing content, and developing technology — I now bring to your business. Just as I chase storms to keep people safe and informed, I approach every client project with that same sense of mission and responsibility. I work with the same intensity I bring to every storm — with all my heart, and with the same purpose: to help people.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- Skills -->
+<div class="skills-section">
+  <div class="skills-inner">
+    <p class="section-eyebrow">Skills & Tools</p>
+    <h2 class="section-title">Built for the <em>full picture.</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">Creative & Production</div>
+        <div class="skill-card-text">Graphic design, video production, live streaming, photo editing & brand storytelling across every major platform.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Web & Development</div>
+        <div class="skill-card-text">HTML/CSS/JS, React/Vite, Python, WordPress & Wix.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Social Media</div>
+        <div class="skill-card-text">Content strategy, community management, audience growth, social analytics & paid ads across Facebook, Instagram, TikTok & more.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Digital Marketing</div>
+        <div class="skill-card-text">SEO, email marketing, Google Business Profile, customer persona development & marketing strategy.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Platforms & Infrastructure</div>
+        <div class="skill-card-text">Supabase, Firebase, Google Cloud, AWS, Cloudflare, GitHub & API integrations including NWS, YouTube & Facebook.</div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Tools</div>
+        <div class="skill-card-text">OBS Studio, DaVinci Resolve, Canva, Photoshop, Lightroom, Meta Business Suite & Cursor.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Faith -->
+<div class="faith-section">
+  <div class="faith-inner">
+    <div class="faith-text">
+      <p class="section-eyebrow">Faith & Calling</p>
+      <h2>Rising from the storm.<br><em>Creating with Purpose.</em></h2>
+      <p>My faith isn't separate from my business — it's the foundation of it. Every project I take on, I give everything I have. Not because a client is watching, but because I believe the work I do is ultimately in service of something greater.</p>
+      <p>The name StormRise Media isn't just a brand. It's a testimony. I rose out of grief, out of uncertainty, out of a season of storms — and God used all of it to shape who I am and what I do.</p>
+      <div class="faith-tagline">Rising from the storm. Creating with Purpose.</div>
+    </div>
+    <div>
+      <div class="faith-verse">
+        <blockquote>"For we are his workmanship, created in Christ Jesus for good works, which God prepared ahead of time for us to do."</blockquote>
+        <cite>Ephesians 2:10 CSB</cite>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <p class="section-eyebrow">Let's Work Together</p>
+    <h2 class="section-title">Ready to build something <em>great?</em></h2>
+    <p class="section-sub" style="margin: 0 auto;">I'd love to learn about your business and help you grow online. The first conversation is always free.</p>
+    <div>
+      <a href="contact.html" class="btn-primary">Start a Conversation</a>
+      <a href="services.html" class="btn-ghost">View Services</a>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-logo">Storm<span>Rise</span> Media</div>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="portfolio.html">Portfolio</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="footer-copy">© 2026 StormRise Media · Wells, MN</p>
+</footer>
+
+<script>
+  document.getElementById('nav-toggle').addEventListener('click', function(e) {
+    e.stopPropagation();
+    var links = document.getElementById('nav-links');
+    var toggle = document.getElementById('nav-toggle');
+    var isOpen = links.classList.toggle('open');
+    toggle.classList.toggle('active', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('nav-links').classList.remove('open');
+      document.getElementById('nav-toggle').classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    var links = document.getElementById('nav-links');
+    var toggle = document.getElementById('nav-toggle');
+    if (links.classList.contains('open') && !links.contains(e.target) && !toggle.contains(e.target)) {
+      links.classList.remove('open');
+      toggle.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  window.addEventListener('scroll', function() {
+    document.getElementById('nav').style.padding = window.scrollY > 60 ? '14px 60px' : '20px 60px';
+  });
+</script>
+</body>
+</html>
